@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next"
+import { useState } from "react";
 
 const languages = {
   en: { nativeName: "English" },
@@ -10,9 +11,17 @@ const languages = {
 function Register() {
   const { t, i18n } = useTranslation()
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const submit = (data) => {
+    const existingUser = localStorage.getItem(`user_${data.email}`);
+    if (existingUser) {
+      console.log("Email already registered");
+      setMessage(t('emailTaken'));
+      return;
+    }
+
     localStorage.setItem(`user_${data.email}`, JSON.stringify({
       name: data.name,
       email: data.email,
@@ -56,6 +65,7 @@ function Register() {
         {errors.name && <span className="notifications">{t('nameMandatory')}</span>}
         <input type="email" {...register("email", { required: true })} placeholder={t('emailPlaceholder')} />
         {errors.email && <span className="notifications">{t('emailMandatory')}</span>}
+        {message && <span className="notifications">{message}</span>}
         <input type="password" {...register("pass", { required: true })} placeholder={t('passwordPlaceholder')} />
         {errors.pass && <span className="notifications">{t('passwordMandatory')}</span>}
         <div className="buttons">

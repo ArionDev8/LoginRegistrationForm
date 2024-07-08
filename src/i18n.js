@@ -32,7 +32,8 @@ i18next.
                     wrongPassword: 'Mismatching credentials',
                     invalidUser: 'User not found',
                     successfulPasswordChange: 'Password changed successfully',
-                    errorPasswordChange: 'Error changing password. User does not exist'
+                    errorPasswordChange: 'Error changing password. User does not exist',
+                    emailTaken: 'Email already taken',
                 }
             },
             alb: {
@@ -58,7 +59,8 @@ i18next.
                     wrongPassword: 'Password i gabuar',
                     invalidUser: 'Perdoruesi me kete adrese emaili nuk u gjet',
                     successfulPasswordChange: 'Fjalekalimi u ndryshua me sukses',
-                    errorPasswordChange: 'Fjalekalimi nuk u ndryshua! Perdoruesi me kete adrese emaili nuk u gjet!'
+                    errorPasswordChange: 'Fjalekalimi nuk u ndryshua! Perdoruesi me kete adrese emaili nuk u gjet!',
+                    emailTaken: 'Adrese emaili e perdorur me pare',
                 }
             }
         }
